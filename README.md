@@ -13,7 +13,7 @@ Add two files to ~/.config/bspwm
 Place bspswallow into your PATH and add the following line to your bspwmrc.
 
 ```
-pidof bspswallow || bspswallow
+pidof bspswallow || bspswallow &
 ```
 
 Now just restart bspwm and you're good to go.
