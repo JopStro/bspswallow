@@ -21,7 +21,7 @@ swallow() {
 
 spit() {
 	spitterid=$1
-	grep "^$spitterid" /tmp/swallowids || return 0
+	grep "^$spitterid" /tmp/swallowids || return
 	spittingid=$(grep "^$spitterid" /tmp/swallowids | head -n1 | awk '{print $2}')
 	bspc node $spittingid --flag hidden=off
 	bspc node $spittingid -f
