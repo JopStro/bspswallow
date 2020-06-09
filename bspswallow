@@ -10,15 +10,6 @@ get_class() {
   fi
 }
 
-get_name() {
-	id=$1
-	if [ -z $id ]; then
-		echo ""
-	else
-		xprop -id $id | sed -n '/^WM_NAME/s/.*\(.*\) = "//p' | sed 's/"$//'
-	fi
-}
-
 swallow() {
 	swallowerid=$1
 	swallowingid=$(bspc query -n prev -N)
