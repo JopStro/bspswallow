@@ -13,7 +13,7 @@ get_class() {
 swallow() {
 	swallowerid=$1
 	swallowingid=$(bspc query -n prev -N)
-	grep "^$(get_class $swallowerid)$" ~/.config/bspwm/swallow || return
+	cat ~/.config/bspwm/noswallow ~/.config/bspwm/terminals | grep "^$(get_class $swallowerid)$" && return
 	grep "^$(get_class $swallowingid)$" ~/.config/bspwm/terminals || return
 	echo $swallowerid $swallowingid >> /tmp/swallowids
 	bspc node $swallowingid --flag hidden=on
