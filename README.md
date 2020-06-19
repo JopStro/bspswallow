@@ -1,6 +1,11 @@
 # bspswallow
 Adds functionality provided by the dwm "swallow" patch to bspwm.
 
+# Dependencies
+
+* bspwm (obviously)
+* xprop
+
 # Instalation
 Add two files to ~/.config/bspwm
 
