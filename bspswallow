@@ -38,8 +38,8 @@ bspc subscribe node_add node_remove | while read -r event
 do
 	case $(echo "$event" | awk '{ print $1 }') in
 		node_add)
-            read -r node desktop < "$(echo "$event" | awk '{print $5 " " $3}')"
-            swallow "$node" "$desktop"
+            # shellcheck disable=SC2046
+            swallow $(echo "$event" | awk '{print $5 " " $3}')
 			;;
 		node_remove)
 			spit "$(echo "$event" | awk '{print $4}')"
