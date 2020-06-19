@@ -11,12 +11,18 @@ get_class() {
 }
 
 swallow() {
+	addedtodesktop=$2
+	echo $addedtodesktop
+	lasttermdesktop=$(bspc query -D -n prev)
+	echo $lasttermdesktop
 	swallowerid=$1
 	swallowingid=$(bspc query -n prev -N)
-	grep "^$(get_class $swallowerid)$" ~/.config/bspwm/swallow || return
-	grep "^$(get_class $swallowingid)$" ~/.config/bspwm/terminals || return
-	echo $swallowerid $swallowingid >> /tmp/swallowids
-	bspc node $swallowingid --flag hidden=on
+	if [ $addedtodesktop = $lasttermdesktop ]; then
+		grep "^$(get_class $swallowerid)$" ~/.config/bspwm/swallow || return
+		grep "^$(get_class $swallowingid)$" ~/.config/bspwm/terminals || return
+		echo $swallowerid $swallowingid >> /tmp/swallowids
+		bspc node $swallowingid --flag hidden=on
+	fi
 }
 
 spit() {
@@ -33,7 +39,7 @@ do
 	
 	case "$(echo $event | awk '{ print $1 }')" in
 		node_add)
-			swallow $(echo $event | awk '{print $5}')
+			swallow $(echo $event | awk '{print $5 " " $3}')
 			;;
 		node_remove)
 			spit $(echo $event | awk '{print $4}')
