@@ -6,7 +6,7 @@ get_class() {
   if [ -z $id ]; then
     echo ""
   else
-	  xprop -id $id | sed -n '/WM_CLASS/s/.*, "\(.*\)"/\1/p'
+	  xprop -id $id | sed -n '/WM_CLASS\|WM_COMMAND/s/.*"\(.*\)".*/\1/p'
   fi
 }
 
@@ -30,10 +30,13 @@ spit() {
 
 bspc subscribe node_add node_remove | while read -r event
 do
-	if [ $(echo $event | awk '{ print $1 }') = node_add ]
-	then
-	swallow $(echo $event | awk '{print $5}')
-	else
-	spit $(echo $event | awk '{print $4}')
-	fi
+	
+	case "$(echo $event | awk '{ print $1 }')" in
+		node_add)
+			swallow $(echo $event | awk '{print $5}')
+			;;
+		node_remove)
+			spit $(echo $event | awk '{print $4}')
+			;;
+	esac
 done
