@@ -27,9 +27,15 @@ swallow() {
 
 spit() {
 	spitterid=$1
+	spitterdesktop=$2
 	grep "^$spitterid" /tmp/swallowids || return
 	spittingid=$(grep "^$spitterid" /tmp/swallowids | head -n1 | awk '{print $2}')
+
 	bspc node "$spittingid" --flag hidden=off
+
+	termdesktop=$(bspc query -D -n "$spittingid")
+	[ "$termdesktop" = "$spitterdesktop" ] || bspc node "$spittingid" -d "$spitterdesktop"
+
 	bspc node "$spittingid" -f
 	sed -i "/^$spitterid/d" /tmp/swallowids
 }
@@ -38,11 +44,10 @@ bspc subscribe node_add node_remove | while read -r event
 do
 	case $(echo "$event" | awk '{ print $1 }') in
 		node_add)
-            # shellcheck disable=SC2046
-            swallow $(echo "$event" | awk '{print $5 " " $3}')
+            		swallow $(echo "$event" | awk '{print $5 " " $3}')
 			;;
 		node_remove)
-			spit "$(echo "$event" | awk '{print $4}')"
+			spit $(echo "$event" | awk '{print $4 " " $3}')
 			;;
 	esac
 done
