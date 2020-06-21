@@ -27,4 +27,4 @@ Now just restart bspwm and you're good to go.
 
 # Known Issues
 
-* Incompatability with LibreOffice due to it having a splash screen and spawning multiple windows, it's reccomended to add libreoffice to the noswallow file if you use it.
+* Incompatability with LibreOffice due to it having a splash screen and spawning multiple windows.
