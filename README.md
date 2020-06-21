@@ -27,4 +27,4 @@ Now just restart bspwm and you're good to go.
 
 # Known Issues
 
-* Incompatability with LibreOffice due to it having a splash screen and spawning multiple windows.
+* Incompatability with LibreOffice due to it having a splash screen and spawning multiple windows, use --no-logo when launching and turn off "Tip of the day" in order to avoid this issue.
