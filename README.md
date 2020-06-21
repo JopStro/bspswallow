@@ -24,3 +24,7 @@ pidof bspswallow || bspswallow &
 ```
 
 Now just restart bspwm and you're good to go.
+
+# Known Issues
+
+* Incompatability with LibreOffice due to it having a splash screen and spawning multiple windows.
