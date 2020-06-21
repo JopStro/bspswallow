@@ -6,7 +6,7 @@ Adds functionality provided by the dwm "swallow" patch to bspwm.
 * bspwm (obviously)
 * xprop
 
-# Instalation
+# Installation
 Add two files to ~/.config/bspwm
 
 * noswallow - list of classes of windows that you dont't to swallow the terminal
