@@ -9,7 +9,7 @@ Adds functionality provided by the dwm "swallow" patch to bspwm.
 # Installation
 Add two files to ~/.config/bspwm
 
-* noswallow - list of classes of windows that you dont't to swallow the terminal
+* noswallow - list of classes of windows that you don't want to swallow the terminal
 
 * terminals - list of classes of terminals that you want to be swallowed
 
