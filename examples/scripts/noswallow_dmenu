@@ -5,7 +5,7 @@ killall bspswallow
 dmenu_run
 
 # Hang until dmenu is closed
-while pidof dmenu; do
+while pidof dmenu; do continue
 done
 
 #If you frequently use dmenu_run without spawing a window commentout this while loop and uncomment the commented out part below
