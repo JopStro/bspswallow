@@ -20,7 +20,7 @@ If a class isn't available (such as with xev) then the command of origin can be 
 Place bspswallow into your PATH and add the following line to your bspwmrc.
 
 ```
-(ps x | grep bspswallow | grep -v grep) || bspswallow
+(ps x | grep bspswallow | grep -v grep) || bspswallow &
 ```
 
 Now just restart bspwm and you're good to go.
