@@ -1,7 +1,7 @@
 # bspswallow
 Adds functionality provided by the dwm "swallow" patch to bspwm.
 
-This branch uses baskerville's xwinfo instead of xprop and sed
+This branch uses baskerville's xwinfo instead of xprop and sed, possibly increasing the speed.
 
 # Dependencies
 
