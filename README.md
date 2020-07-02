@@ -1,10 +1,12 @@
 # bspswallow
 Adds functionality provided by the dwm "swallow" patch to bspwm.
 
+This branch uses baskerville's xwinfo instead of xprop and sed
+
 # Dependencies
 
 * bspwm (obviously)
-* xprop
+* xwinfo (https://github.com/baskerville/xwinfo or on AUR as xwinfo-git)
 
 # Installation
 Add two files to ~/.config/bspwm
