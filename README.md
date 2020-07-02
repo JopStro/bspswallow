@@ -15,7 +15,7 @@ Add two files to ~/.config/bspwm
 
 * terminals - list of classes of terminals that you want to be swallowed
 
-If a class isn't available (such as with xev) then the command of origin can be used.
+If a class isn't available (such as with xev) use 'N/A' to set for all (this shouldn't be an issue as xev is most likely the only case)
 
 (example files are included in "examples")
 
