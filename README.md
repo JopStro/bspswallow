@@ -22,7 +22,7 @@ If a class isn't available (such as with xev) use 'N/A' to set for all (this sho
 Place bspswallow into your PATH and add the following line to your bspwmrc.
 
 ```
-(ps x | grep bspswallow | grep -v grep) || bspswallow &
+pgrep bspswallow || bspswallow &
 ```
 
 Now just restart bspwm and you're good to go.
