@@ -1,0 +1,7 @@
+#!/bin/sh
+# Prefix to a command to make it so that any windows spawned from it don't swallow the terminal
+# for launching things from sxhd etc
+killall bspswallow
+eval "$1" >/dev/null
+sleep 2
+bspswallow &
