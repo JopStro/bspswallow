@@ -6,7 +6,9 @@ get_class() {
   if [ -z "$id" ]; then
     echo ""
   else
-	  xprop -id "$id" | sed -n '/WM_CLASS\|WM_COMMAND/s/.*"\(.*\)".*/\1/p'
+    xprop -id "$id" | sed -n \
+      -e '/WM_CLASS/s/\( "\)/\n/g; s/[^\n]*\n\([^"]*\)[^\n]*/\1\n/g' \
+      -e '/WM_COMMAND/s/[^"]*/\n\n/1; s/\n"//1; s/\n\([^"]*\)".*/\n\1/; /\n/p'
   fi
 }
 
