@@ -28,4 +28,4 @@ Now just restart bspwm and you're good to go.
 # Known Issues
 
 * Incompatability with LibreOffice due to it having a splash screen and spawning multiple windows, use --no-logo when launching and turn off "Tip of the day" in order to avoid this issue.
-* Due to the way the script works, programs opened with dmenu_run will still swallow the teminal. This issue can be avoided by using the script noswallow_dmenu in examples/scripts instead of dmenu_run.
+* ~~Due to the way the script works, programs opened with dmenu_run will still swallow the teminal. This issue can be avoided by using the script noswallow_dmenu in examples/scripts instead of dmenu_run.~~ this is now only an issue with windows without the \_NET\_WM\_PID xproperty
