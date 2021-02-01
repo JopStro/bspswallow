@@ -6,7 +6,9 @@ get_class() {
   if [ -z "$id" ]; then
     echo ""
   else
-	  xprop -id "$id" | sed -n '/WM_CLASS\|WM_COMMAND/s/.*"\(.*\)".*/\1/p'
+    xprop -id "$id" | sed -n \
+      -e '/WM_CLASS/s/\( "\)/\n/g; s/[^\n]*\n\([^"]*\)[^\n]*/\1\n/g' \
+      -e '/WM_COMMAND/s/[^"]*/\n\n/1; s/\n"//1; s/\n\([^"]*\)".*/\n\1/; /\n/p' | sed '/^$/d' | head -n1
   fi
 }
 
@@ -31,7 +33,7 @@ swallow() {
 	swallowingid=$(bspc query -N -n last)
 	if [ "$addedtodesktop" = "$lasttermdesktop" ] && check_swallowing_process "$swallowerid" "$swallowingid"; then
 		cat ~/.config/bspwm/noswallow ~/.config/bspwm/terminals | grep "^$(get_class "$swallowerid")$" && return
-		grep "^$(get_class "$swallowingid")$" ~/.config/bspwm/terminals || return
+		grep -i "^$(get_class "$swallowingid")$" ~/.config/bspwm/terminals || return
 		echo "$swallowerid $swallowingid" >> /tmp/swallowids
 		bspc node "$swallowingid" --flag hidden=on
 	fi
