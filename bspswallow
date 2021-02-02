@@ -13,7 +13,7 @@ get_class() {
 }
 
 get_pid() {
-	xprop _NET_WM_PID -id "$1" | awk '/[0-9]{4}/ {print $3}'
+	xprop _NET_WM_PID -id "$1" | awk '/[0-9]*/ {print $3}'
 }
 
 get_ppid() {
