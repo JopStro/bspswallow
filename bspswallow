@@ -24,7 +24,7 @@ check_swallowing_process() {
 	pid=$(get_pid $1)
 	[ -z $pid ] && return 0
 	gppid=$(get_ppid $(get_ppid $pid))
-	grep -i "^$(ps -o cmd= -p $gppid | awk '{print $1}')$" ~/.config/bspwm/terminals && return 0
+	grep -i "^$(ps -o cmd= -p $gppid | awk '{print $1}' | sed 's_^.*/__')$" ~/.config/bspwm/terminals && return 0
 	[ "$(get_ppid "$(get_ppid "$(get_pid "$1")")")" = "$(get_pid "$2")" ] && return 0 || return 1
 }
 
